@@ -244,9 +244,10 @@ header h1 {
 }
 
 .option-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 24px 1fr 140px 80px 40px auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 8px;
     padding: 12px;
     margin-bottom: 8px;
     background: var(--background);
@@ -255,13 +256,20 @@ header h1 {
     animation: slideIn 0.3s ease;
 }
 
-.option-item input {
-    flex: 1;
+.option-item input { /* override flex behavior from older layout */
     background: transparent;
     border: none;
     color: var(--text-primary);
     font-size: 1rem;
     padding: 4px;
+}
+
+.option-item .label-input {
+    width: 100%;
+}
+
+.option-item input[type="range"] {
+    width: 100%;
 }
 
 .option-item input:focus {
@@ -271,6 +279,18 @@ header h1 {
 
 .option-item button {
     margin-left: 10px;
+}
+
+.drag-handle {
+    cursor: grab;
+    user-select: none;
+    color: var(--text-secondary);
+    font-weight: 700;
+    text-align: center;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
 }
 
 .button-group {
@@ -396,6 +416,30 @@ footer {
     }
 }
 
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    /* Globally minimize animations and transitions */
+    * , *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        animation-play-state: paused !important;
+    }
+
+    /* Reduce interactive transforms */
+    .spin-btn,
+    .btn,
+    .btn:hover,
+    .btn:active {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Avoid large decorative elements moving */
+    .spinner-pointer { display: none; }
+    .result-display { animation: none !important; }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .content-wrapper {
@@ -440,6 +484,12 @@ footer {
 
     .button-group {
         grid-template-columns: 1fr;
+    }
+
+    /* Make option rows more compact on small screens */
+    .option-item {
+        grid-template-columns: 20px 1fr 120px 70px 32px auto;
+        gap: 6px;
     }
 }
 
