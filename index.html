@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern spinner wheel for making decisions and random selections">
+    <title>Spinner Wheel - Make Your Choice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Spinner Wheel</h1>
+            <p class="subtitle">Add your options and spin to make a choice!</p>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <!-- Spinner Section -->
+                <section class="spinner-section">
+                    <div class="spinner-container">
+                        <canvas id="spinnerCanvas" width="500" height="500"></canvas>
+                        <div class="spinner-center">
+                            <button id="spinButton" class="spin-btn">SPIN</button>
+                        </div>
+                        <div class="spinner-pointer"></div>
+                    </div>
+                    <div id="resultDisplay" class="result-display"></div>
+                </section>
+
+                <!-- Control Panel Section -->
+                <section class="control-panel">
+                    <div class="card">
+                        <h2>Options</h2>
+                        <div class="input-group">
+                            <input type="text" id="newOption" placeholder="Add new option..." />
+                            <button id="addButton" class="btn btn-primary">Add</button>
+                        </div>
+                        
+                        <div id="optionsList" class="options-list"></div>
+
+                        <div class="button-group">
+                            <button id="clearAllButton" class="btn btn-secondary">Clear All</button>
+                            <button id="exportButton" class="btn btn-secondary">Export</button>
+                            <button id="importButton" class="btn btn-secondary">Import</button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;" />
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Settings</h2>
+                        <div class="settings-group">
+                            <label>
+                                <input type="checkbox" id="soundToggle" checked />
+                                Enable Sound Effects
+                            </label>
+                            <label>
+                                <input type="checkbox" id="confettiToggle" checked />
+                                Show Confetti
+                            </label>
+                            <label>
+                                Spin Duration (seconds):
+                                <input type="number" id="spinDuration" min="1" max="10" value="3" />
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Future Features Section -->
+                    <div class="card future-features">
+                        <h2>Coming Soon</h2>
+                        <p>🗺️ Map integration with CesiumJS</p>
+                        <p>☁️ Cloud sync with backend</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ | Ready for Netlify deployment</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
