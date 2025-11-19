@@ -1,82 +1,91 @@
 # Quick Start Guide
 
-## 🚀 Running Locally
+This app is now built with React + Vite. Follow these steps to run and deploy it.
 
-Choose one of these methods:
+## ✅ Prerequisites
 
-### Method 1: Python
+- Node.js 18 or newer
+- Git (optional, for deployment via GitHub)
+
+On Windows PowerShell, if npm scripts are blocked by policy, run with `npm.cmd run <script>`.
+
+## 🚀 Run Locally (Development)
+
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
-Then open http://localhost:8000
 
-### Method 2: Node.js
+Open the printed local URL in your browser.
+
+## � Build and Preview (Production)
+
 ```bash
-npx serve .
+npm run build
+npm run preview
 ```
 
-### Method 3: Just open the file
-Simply double-click `index.html` (some features like local storage work better with a server)
+This generates a `dist/` folder and serves it locally for a sanity check.
 
-## 📤 Deploy to Netlify
+## 🌐 Deploy to Netlify
 
-### Option 1: Netlify UI
-1. Go to https://app.netlify.com/
-2. Drag and drop this folder
-3. Done! Your site is live
+This repo includes `netlify.toml` with:
+
+- Build command: `npm run build`
+- Publish: `dist`
+- SPA redirect
+
+### Option 1: GitHub Integration (recommended)
+1. Push the repository to GitHub
+2. Connect it in the Netlify dashboard
+3. Deploy — Netlify will use the provided config automatically
 
 ### Option 2: Netlify CLI
 ```bash
 npm install -g netlify-cli
 netlify login
-netlify deploy --prod
+npm run build
+netlify deploy --prod --dir=dist
 ```
-
-### Option 3: GitHub Integration
-1. Push this repository to GitHub
-2. Connect repository in Netlify dashboard
-3. Netlify auto-detects configuration
-4. Site deploys automatically on every push
 
 ## 🎯 How to Use
 
-1. **Add Options**: Type in the input field and click "Add" or press Enter
-2. **Edit Options**: Click on any option text to edit it
-3. **Remove Options**: Click the "Remove" button next to an option
-4. **Spin**: Click the "SPIN" button in the center of the wheel
-5. **Export**: Click "Export" to download your configuration as JSON
-6. **Import**: Click "Import" to load a previously saved configuration
-7. **Settings**: Customize sound, confetti, and spin duration
+1. Add options via the input + Add (or press Enter)
+2. Edit labels inline
+3. Set weights with slider/number (higher = more likely)
+4. Pick a slice color
+5. Reorder using the ≡ drag handle
+6. Click SPIN to pick a winner
+7. Settings: toggle Sound, Confetti, Spin Duration, and Equal-size slices (probability-only)
+8. Export/Import your configuration as JSON
+
+Notes:
+- Equal-size slices mode draws equal visual segments while still selecting winners by weight.
+- If your OS prefers reduced motion, the app minimizes or skips animations.
 
 ## 💾 Data Persistence
 
-Your options and settings are automatically saved in your browser's local storage. They will be there when you return!
+Options and settings are saved in LocalStorage and loaded automatically.
+
+## � Troubleshooting
+
+**PowerShell blocks npm scripts**
+- Use `npm.cmd run dev` (or adjust your execution policy if appropriate)
+
+**Nothing happens on SPIN when reduced motion is on**
+- That’s expected: we skip the animated spin and jump to the result for accessibility
+
+**Deploy succeeds but route 404s**
+- Ensure the SPA redirect is enabled (provided in `netlify.toml`)
+
+**Import fails**
+- Use a JSON file previously exported by the app
 
 ## 🔮 Coming Soon
 
-- 🗺️ CesiumJS map integration for location-based features
-- ☁️ Cloud sync with backend (Render.com)
-- 🎨 Custom color themes
-- 📊 Spin history and statistics
-
-## 📝 Notes
-
-- No build process required
-- No dependencies to install
-- Pure HTML, CSS, and JavaScript
-- Works offline (after first load)
-- Mobile-friendly and responsive
-
-## 🐛 Troubleshooting
-
-**Issue**: Options not saving
-- **Solution**: Make sure you're using a web server (not file:// protocol)
-
-**Issue**: Sound not working
-- **Solution**: Some browsers require user interaction first. Click the page, then try again.
-
-**Issue**: Import not working
-- **Solution**: Make sure you're importing a valid JSON file created by the export function
+- Export wheel as SVG/PNG
+- Shareable permalinks and embed codes
+- Theme presets and palettes
 
 ## 🎉 Enjoy!
 

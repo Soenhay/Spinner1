@@ -1,107 +1,125 @@
 # 🎯 Spinner Wheel
 
-A modern, interactive spinner wheel web application for making random selections and decisions. Perfect for games, giveaways, classroom activities, and decision-making!
+A modern, interactive spinner wheel for random selections and decisions. Built with React + Vite, rendered on Canvas, and deployed-friendly for Netlify.
 
 ## ✨ Features
 
-- 🎨 **Modern, Responsive Design** - Beautiful gradient UI that works on all devices
-- 🎡 **Interactive Spinner Wheel** - Smooth animations and realistic physics
-- 💾 **Local Storage** - Your options are automatically saved and persist between sessions
-- 📤 **Export/Import** - Download your configurations as JSON files and reload them anytime
-- ⚙️ **Customizable Settings** - Control sound effects, confetti, and spin duration
-- 🎉 **Celebration Effects** - Confetti animation and sound effects when a winner is selected
-- 📱 **Mobile Friendly** - Fully responsive design works great on phones and tablets
+- 🎨 Modern, responsive UI
+- 🎡 Smooth spinning with easing; top pointer shows result
+- �️ Weights per option (probability control)
+- 🟦 Per-slice color pickers
+- ↕️ Drag handle to reorder options
+- 🟰 Equal-size slices (probability-only mode): equal visual segments while selection remains weighted
+- 💾 LocalStorage persistence (options + settings)
+- 📤 Export/Import JSON
+- 🔊 Sound effect on win (toggle)
+- 🎊 Confetti on win (toggle)
+- 🧭 Reduced-motion support (skips animations when preferred)
+- 📱 Mobile-friendly
 
 ## 🚀 Getting Started
 
-This is a static site that requires no build process or dependencies!
+Requires Node.js 18+.
 
-### Running Locally
-
-Simply open `index.html` in your web browser:
+### Install and run (development)
 
 ```bash
-# If you have Python installed, you can serve it locally:
-python3 -m http.server 8000
-
-# Or with Node.js:
-npx serve .
+npm install
+npm run dev
 ```
 
-Then navigate to `http://localhost:8000` in your browser.
+The dev server prints a local URL; open it in your browser.
 
-### Deployment
+On Windows PowerShell, if you hit script policy issues, you can run with `npm.cmd run dev` instead.
 
-#### Deploy to Netlify
-
-1. Push this repository to GitHub
-2. Connect your repository to [Netlify](https://netlify.com)
-3. Netlify will automatically detect the configuration from `netlify.toml`
-4. Your site will be live in minutes!
-
-Or use the Netlify CLI:
+### Production build
 
 ```bash
-npm install -g netlify-cli
-netlify deploy --prod
+npm run build
+npm run preview
 ```
+
+`preview` serves the built `dist/` locally for a quick sanity check.
+
+## 🌐 Deployment
+
+This project includes a `netlify.toml` with:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- SPA redirect configured
+
+Steps:
+1. Push to GitHub
+2. Connect the repo on Netlify
+3. Deploy (Netlify will use the provided config)
 
 ## 📖 How to Use
 
-1. **Add Options**: Type your options in the input field and click "Add" or press Enter
-2. **Edit Options**: Click on any option in the list to edit it
-3. **Remove Options**: Click the "Remove" button next to any option
-4. **Spin the Wheel**: Click the "SPIN" button in the center of the wheel
-5. **Export/Import**: Save your configurations or load previously saved ones
-6. **Customize**: Adjust settings like sound effects, confetti, and spin duration
+1. Add an option via the input + Add, or press Enter
+2. Edit labels inline
+3. Set a weight with the slider/number field (higher = more likely to win)
+4. Pick a slice color
+5. Reorder by dragging the ≡ handle on the left
+6. Spin using the center SPIN button
+7. Toggle Settings: Sound, Confetti, Spin duration, and Equal-size slices
+8. Export/Import your configuration as JSON
+
+Notes:
+- Equal-size slices mode draws equal visual segments, but still selects winners by weight.
+- If your system prefers reduced motion, the app skips spinning animation and jumps to the result.
 
 ## 🛠️ Technology Stack
 
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS Grid, Flexbox, and animations
-- **Vanilla JavaScript** - No frameworks, pure ES6+ JavaScript
-- **Canvas API** - For rendering the spinner wheel
-- **Local Storage API** - For persisting user data
-- **Web Audio API** - For sound effects
+- React + Vite
+- Canvas 2D API for wheel rendering
+- CSS Grid/Flexbox, animations
+- LocalStorage for persistence
+- Web Audio API for sound
 
-## 🔮 Future Enhancements
-
-- 🗺️ **CesiumJS Integration** - Add location-based features with interactive maps
-- ☁️ **Backend Integration** - Sync configurations across devices using Render.com backend
-- 🎨 **Custom Colors** - Allow users to choose custom color schemes
-- 📊 **History/Statistics** - Track spin history and winner statistics
-- 👥 **Multi-wheel Support** - Manage multiple different wheels
-- 🔗 **Shareable Links** - Share wheel configurations via URLs
-
-## 📁 Project Structure
+## � Project Structure
 
 ```
 Spinner1/
-├── index.html          # Main HTML file
-├── styles.css          # All styles and animations
-├── app.js             # Application logic and wheel functionality
-├── netlify.toml       # Netlify deployment configuration
-├── .gitignore         # Git ignore rules
-└── README.md          # This file
+├── index.html
+├── netlify.toml
+├── styles.css
+├── src/
+│   ├── main.jsx
+│   ├── index.css
+│   ├── App.jsx
+│   └── components/
+│       ├── SpinnerApp.jsx
+│       └── OptionsPanel.jsx
+├── package.json
+└── README.md
 ```
+
+## ♿ Accessibility
+
+- Respects `prefers-reduced-motion`
+- High-contrast pointer and centered result announcement
+
+## � Next Ideas
+
+- Export wheel as SVG/PNG; embed code; shareable permalinks
+- Theme presets and palettes
+- PWA/offline support
+- Lightweight analytics with privacy toggle
+- Spin history and statistics
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-
-- Report bugs
-- Suggest new features
-- Submit pull requests
+Contributions are welcome! Please open issues or pull requests with ideas or fixes.
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+MIT License
 
 ## 🙏 Acknowledgments
 
 - Inspired by [Wheel of Names](https://wheelofnames.com)
-- Built for deployment on [Netlify](https://netlify.com)
-- Future backend support via [Render](https://render.com)
+- Optimized for deployment on [Netlify](https://netlify.com)
 
 ---
 
